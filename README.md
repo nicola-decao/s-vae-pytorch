@@ -20,7 +20,7 @@ $ python setup.py install
 ```
 
 ## Structure
-* [distributions](https://github.com/nicola-decao/s-vae-pytorch/tree/master/hyperspherical_vae/distributions): Pytorcyh implementation of the von Mises-Fisher and hyperspherical Uniform distributions. Both inherit from `tf.distributions.Distribution`.
+* [distributions](https://github.com/nicola-decao/s-vae-pytorch/tree/master/hyperspherical_vae/distributions): Pytorch implementation of the von Mises-Fisher and hyperspherical Uniform distributions. Both inherit from `torch.distributions.Distribution`.
 * [ops](https://github.com/nicola-decao/s-vae-pytorch/tree/master/hyperspherical_vae/ops): Low-level operations used for computing the exponentially scaled modified Bessel function of the first kind and its derivative.
 
 ## Usage
