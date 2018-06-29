@@ -1,8 +1,8 @@
 # Hyperspherical Variational Auto-Encoders
-### Pytorcyh implementation of Hyperspherical Variational Auto-Encoders
+### Pytorch implementation of Hyperspherical Variational Auto-Encoders
 
 ## Overview
-This library contains a Pytorcyh implementation of the hyperspherical variational auto-encoder, or S-VAE, as presented in [[1]](#citation)(http://arxiv.org/abs/1804.00891). Check also our blogpost (https://nicola-decao.github.io/s-vae).
+This library contains a Pytorch implementation of the hyperspherical variational auto-encoder, or S-VAE, as presented in [[1]](#citation)(http://arxiv.org/abs/1804.00891). Check also our blogpost (https://nicola-decao.github.io/s-vae).
 
 ## Dependencies
 
