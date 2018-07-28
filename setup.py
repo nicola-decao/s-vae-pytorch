@@ -14,6 +14,6 @@ setup(
     url='https://nicola-decao.github.io/s-vae-pytorch/',
     download_url='https://github.com/nicola-decao/SVAE',
     long_description=open(os.path.join(os.path.dirname(__file__), 'README.md')).read(),
-    install_requires=['numpy', 'pytorch>=0.4.0', 'scipy', 'numpy'],
+ #   install_requires=['numpy', 'torch>=0.4.0', 'scipy>=1.0.0', 'numpy'],
     packages=find_packages()
 )
