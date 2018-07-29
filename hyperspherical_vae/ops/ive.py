@@ -20,17 +20,17 @@ class IveFunction(torch.autograd.Function):
             output = scipy.special.i0e(z_cpu, dtype=z_cpu.dtype)
         elif np.isclose(v, 1):
             output = scipy.special.i1e(z_cpu, dtype=z_cpu.dtype)
-        elif v > 0:
+        else: #  v > 0
             output = scipy.special.ive(v, z_cpu, dtype=z_cpu.dtype)
-        else:
-            print(v, type(v), np.isclose(v, 0))
-            raise RuntimeError('v must be >= 0, it is {}'.format(v))
+#         else:
+#             print(v, type(v), np.isclose(v, 0))
+#             raise RuntimeError('v must be >= 0, it is {}'.format(v))
         
         return torch.Tensor(output).to(z.device)
 
     @staticmethod
     def backward(self, grad_output):
-        z = self.saved_tensors[0]
+        z = self.saved_tensors[-1]
         return None, grad_output * (ive(self.v - 1, z) - ive(self.v, z) * (self.v + z) / z)
 
 class Ive(torch.nn.Module):

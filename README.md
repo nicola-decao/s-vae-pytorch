@@ -7,7 +7,7 @@ This library contains a Pytorch implementation of the hyperspherical variational
 ## Dependencies
 
 * **python>=3.6**
-* **pytorch>=0.4.0**: https://pytorch.org
+* **pytorch>=0.4.1**: https://pytorch.org
 * **scipy**: https://scipy.org
 * **numpy**: https://www.numpy.org
 
@@ -22,9 +22,10 @@ $ python setup.py install
 ## Structure
 * [distributions](https://github.com/nicola-decao/s-vae-pytorch/tree/master/hyperspherical_vae/distributions): Pytorch implementation of the von Mises-Fisher and hyperspherical Uniform distributions. Both inherit from `torch.distributions.Distribution`.
 * [ops](https://github.com/nicola-decao/s-vae-pytorch/tree/master/hyperspherical_vae/ops): Low-level operations used for computing the exponentially scaled modified Bessel function of the first kind and its derivative.
+* [examples](https://github.com/nicola-decao/s-vae-pytorch/tree/master/examples): Example code for using the library within a Tensorflow project.
 
 ## Usage
-Coming soon!
+Please have a look into the [examples folder](https://github.com/nicola-decao/s-vae-pytorch/tree/master/examples). We adapted our implementation to follow the structure of the [Pytorch probability distributions](https://pytorch.org/docs/stable/distributions.html).
 
 Please cite [[1](#citation)] in your work when using this library in your experiments.
 
