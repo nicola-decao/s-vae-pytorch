@@ -161,7 +161,8 @@ def test(model, optimizer):
 
         _, (q_z, p_z), _, x_mb_ = model(x_mb.reshape(-1, 784))
         
-        print_['recon loss'].append(float(nn.BCEWithLogitsLoss(reduction='none')(x_mb_, x_mb.reshape(-1, 784)).sum(-1).mean().data))
+        print_['recon loss'].append(float(nn.BCEWithLogitsLoss(reduction='none')(x_mb_,
+            x_mb.reshape(-1, 784)).sum(-1).mean().data))
         
         if model.distribution == 'normal':
             print_['KL'].append(float(torch.distributions.kl.kl_divergence(q_z, p_z).sum(-1).mean().data))
