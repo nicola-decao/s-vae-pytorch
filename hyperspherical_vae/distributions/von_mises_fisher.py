@@ -84,9 +84,9 @@ class VonMisesFisher(torch.distributions.Distribution):
             u = torch.distributions.Uniform(0, 1).sample(shape).to(self.device)
             
             w_ = (1 - (1 + b) * e_) / (1 - (1 - b) * e_)
-            log_t = (2 * a * b) - (1 - (1 - b) * e_)
+            t = (2 * a * b) / (1 - (1 - b) * e_)
 
-            accept = ((self.__m - 1) * log_t - log_t.exp() + d) > torch.log(u)
+            accept = ((self.__m - 1) * t.log() - t + d) > torch.log(u)
             reject = 1 - accept
             
             w[bool_mask * accept] = w_[bool_mask * accept]

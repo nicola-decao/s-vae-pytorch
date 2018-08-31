@@ -179,7 +179,7 @@ def test(model, optimizer):
 
 # hidden dimension and dimension of latent space
 H_DIM = 128
-Z_DIM = 2
+Z_DIM = 5
 
 # normal VAE
 modelN = ModelVAE(h_dim=H_DIM, z_dim=Z_DIM, distribution='normal')
@@ -206,4 +206,7 @@ train(modelS, optimizerS)
 
 # test
 test(modelS, optimizerS)
+
+
+
 
