@@ -12,24 +12,32 @@ class HypersphericalUniform(torch.distributions.Distribution):
     @property
     def dim(self):
         return self._dim
-    
-    def __init__(self, dim, validate_args=None):
+
+    @property
+    def device(self):
+        return self._device
+
+    @device.setter
+    def device(self, val):
+        self._device = val if isinstance(val, torch.device) else torch.device(val)
+
+    def __init__(self, dim, validate_args=None, device="cpu"):
         super(HypersphericalUniform, self).__init__(torch.Size([dim]), validate_args=validate_args)
         self._dim = dim
+        self.device = device
 
-    def sample(self, shape=torch.Size()):        
+    def sample(self, shape=torch.Size()):
         output = torch.distributions.Normal(0, 1).sample(
-            (shape if isinstance(shape, torch.Size) else torch.Size([shape])) + torch.Size([self._dim + 1]))
+            (shape if isinstance(shape, torch.Size) else torch.Size([shape])) + torch.Size([self._dim + 1])).to(self.device)
 
         return output / output.norm(dim=-1, keepdim=True)
 
     def entropy(self):
         return self.__log_surface_area()
-    
+
     def log_prob(self, x):
-        return - torch.ones(x.shape[:-1]) * self.__log_surface_area()
+        return - torch.ones(x.shape[:-1], device=self.device) * self.__log_surface_area()
 
     def __log_surface_area(self):
         return math.log(2) + ((self._dim + 1) / 2) * math.log(math.pi) - torch.lgamma(
-            torch.Tensor([(self._dim + 1) / 2]))
-        
+            torch.Tensor([(self._dim + 1) / 2], device=self.device))
