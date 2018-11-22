@@ -4,7 +4,7 @@
 ## Overview
 This library contains a Pytorch implementation of the hyperspherical variational auto-encoder, or S-VAE, as presented in [[1]](#citation)(http://arxiv.org/abs/1804.00891). Check also our blogpost (https://nicola-decao.github.io/s-vae).
 
-* You do not use Pytorch? Take a look [here](https://github.com/nicola-decao/s-vae-tf) for a **tensorflow** implementation!
+* Don't use Pytorch? Take a look [here](https://github.com/nicola-decao/s-vae-tf) for a **tensorflow** implementation!
 
 ## Dependencies
 
@@ -24,7 +24,7 @@ $ python setup.py install
 ## Structure
 * [distributions](https://github.com/nicola-decao/s-vae-pytorch/tree/master/hyperspherical_vae/distributions): Pytorch implementation of the von Mises-Fisher and hyperspherical Uniform distributions. Both inherit from `torch.distributions.Distribution`.
 * [ops](https://github.com/nicola-decao/s-vae-pytorch/tree/master/hyperspherical_vae/ops): Low-level operations used for computing the exponentially scaled modified Bessel function of the first kind and its derivative.
-* [examples](https://github.com/nicola-decao/s-vae-pytorch/tree/master/examples): Example code for using the library within a Tensorflow project.
+* [examples](https://github.com/nicola-decao/s-vae-pytorch/tree/master/examples): Example code for using the library within a PyTorch project.
 
 ## Usage
 Please have a look into the [examples folder](https://github.com/nicola-decao/s-vae-pytorch/tree/master/examples). We adapted our implementation to follow the structure of the [Pytorch probability distributions](https://pytorch.org/docs/stable/distributions.html).
@@ -41,7 +41,7 @@ To sample the von Mises-Fisher distribution we follow the rejection sampling pro
 _Note that as ![](http://latex.codecogs.com/svg.latex?%5Comega) is a scalar, this approach does not suffer from the curse of dimensionality. For the final transformation, ![](http://latex.codecogs.com/svg.latex?U%28%5Cmathbf%7Bz%7D%27%3B%5Cmu%29), a [Householder reflection](https://en.wikipedia.org/wiki/Householder_transformation) is utilized._
 
 ## Feedback
-For questions and comments, feel free to contact [Nicola De Cao](mailto:nicola.decao@gmail.com).
+For questions and comments, feel free to contact [Nicola De Cao](mailto:nicola.decao@gmail.com) or [Tim Davidson](mailto:itimrd@gmail.com).
 
 ## License
 MIT
@@ -50,7 +50,7 @@ MIT
 ```
 [1] Davidson, T. R., Falorsi, L., De Cao, N., Kipf, T.,
 and Tomczak, J. M. (2018). Hyperspherical Variational
-Auto-Encoders. arXiv preprint arXiv:1804.00891.
+Auto-Encoders. 34th Conference on Uncertainty in Artificial Intelligence (UAI-18).
 ```
 
 BibTeX format:
@@ -62,7 +62,7 @@ BibTeX format:
           De Cao, Nicola and
           Kipf, Thomas and
           Tomczak, Jakub M.},
-  journal={arXiv preprint arXiv:1804.00891},
+  journal={34th Conference on Uncertainty in Artificial Intelligence (UAI-18)},
   year={2018}
 }
 ```
