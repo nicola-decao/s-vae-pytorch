@@ -157,7 +157,10 @@ def train(model, optimizer):
 def test(model, optimizer):
     print_ = defaultdict(list)
     for x_mb, y_mb in test_loader:
-
+        
+        # dynamic binarization
+        x_mb = (x_mb > torch.distributions.Uniform(0, 1).sample(x_mb.shape)).float()
+        
         _, (q_z, p_z), _, x_mb_ = model(x_mb.reshape(-1, 784))
         
         print_['recon loss'].append(float(nn.BCEWithLogitsLoss(reduction='none')(x_mb_,
