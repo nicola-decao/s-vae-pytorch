@@ -92,11 +92,7 @@ class ModelVAE(torch.nn.Module):
 
         return q_z, p_z
         
-    def forward(self, x):
-        
-        # dynamic binarization
-        x = (x > torch.distributions.Uniform(0, 1).sample(x.shape)).float()
-            
+    def forward(self, x): 
         z_mean, z_var = self.encode(x)
         q_z, p_z = self.reparameterize(z_mean, z_var)
         z = q_z.rsample()
@@ -137,6 +133,9 @@ def train(model, optimizer):
     for i, (x_mb, y_mb) in enumerate(train_loader):
 
             optimizer.zero_grad()
+            
+            # dynamic binarization
+            x_mb = (x_mb > torch.distributions.Uniform(0, 1).sample(x_mb.shape)).float()
 
             _, (q_z, p_z), _, x_mb_ = model(x_mb.reshape(-1, 784))
 
