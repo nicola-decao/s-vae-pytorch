@@ -126,7 +126,7 @@ def log_likelihood(model, x, n=10):
     if model.distribution == 'normal':
         log_q_z_x = log_q_z_x.sum(-1)
 
-    return ((log_p_x_z + log_p_z - log_q_z_x).t() - np.log(n)).logsumexp(-1).mean()
+    return ((log_p_x_z + log_p_z - log_q_z_x).t().logsumexp(-1) - np.log(n)).mean()
 
 
 def train(model, optimizer):
@@ -208,7 +208,3 @@ train(modelS, optimizerS)
 
 # test
 test(modelS, optimizerS)
-
-
-
-
