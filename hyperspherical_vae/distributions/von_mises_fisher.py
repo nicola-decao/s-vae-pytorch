@@ -45,7 +45,8 @@ class VonMisesFisher(torch.distributions.Distribution):
             shape + torch.Size(self.loc.shape)).to(self.device).transpose(0, -1)[1:]).transpose(0, -1)
         v = v / v.norm(dim=-1, keepdim=True)
 
-        x = torch.cat((w, torch.sqrt(1 - (w ** 2)) * v), -1)
+        w_ = torch.sqrt(torch.clamp(1 - (w ** 2), 1e-10))
+        x = torch.cat((w, w_ * v), -1)
         z = self.__householder_rotation(x)
 
         return z.type(self.dtype)
